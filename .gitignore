@@ -34,5 +34,7 @@ nosetests.xml
 .project
 .pydevproject
 
+.codeintel
+src/
 # Initialization values
 customizeme.cfg
