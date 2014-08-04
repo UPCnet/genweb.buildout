@@ -98,7 +98,7 @@ sub vcl_miss {
 
 }
 
-sub vcl_fetch {
+sub vcl_backend_response {
     set beresp.grace = 120s;
 
    /*if (!obj.ttl > 0s) {
