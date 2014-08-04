@@ -36,5 +36,7 @@ nosetests.xml
 
 .codeintel
 src/
+config/nginx
+
 # Initialization values
 customizeme.cfg
