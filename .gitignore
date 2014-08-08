@@ -38,6 +38,7 @@ nosetests.xml
 src/
 config/nginx
 config/circus.ini
+config/nginx.conf
 
 # Initialization values
 customizeme.cfg
