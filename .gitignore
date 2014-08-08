@@ -37,6 +37,7 @@ nosetests.xml
 .codeintel
 src/
 config/nginx
+config/circus.ini
 
 # Initialization values
 customizeme.cfg
