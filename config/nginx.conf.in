@@ -1,0 +1,117 @@
+user plone;
+
+worker_processes 2;
+daemon on;
+
+worker_rlimit_nofile 8192;
+
+events {
+  worker_connections  8000;
+}
+
+pid /var/nginx/var/nginx.pid;
+error_log /var/nginx/var/log/nginx.error.log;
+
+http {
+  include nginx-mime.types;
+
+  # XXX: Change on production
+  ssl_certificate       ssl/localhost.crt;
+  ssl_certificate_key   ssl/localhost.key;
+
+  map $scheme $server_https {
+     default off;
+     https on;
+  }
+
+  default_type  application/octet-stream;
+
+  log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                    '$status $body_bytes_sent "$http_referer" '
+                    '"$http_user_agent" "$http_x_forwarded_for"';
+
+  access_log   /var/nginx/var/log/nginx.access.log  main;
+
+  keepalive_timeout 20;
+  sendfile on;
+  tcp_nopush on; # off may be better for Comet/long-poll stuff
+  tcp_nodelay off; # on may be better for Comet/long-poll stuff
+
+  gzip on;
+  gzip_http_version 1.0;
+  gzip_comp_level 5;
+  gzip_min_length 512;
+  gzip_buffers 16 8k;
+  gzip_proxied any;
+  gzip_types
+    text/css
+    text/javascript
+    text/xml
+    text/plain
+    text/x-component
+    application/javascript
+    application/x-javascript
+    application/json
+    application/xml
+    application/rss+xml
+    font/truetype
+    font/opentype
+    application/vnd.ms-fontobject
+    image/svg+xml;
+
+  gzip_disable        "MSIE [1-6]\.";
+  gzip_vary           on;
+
+  # Allow to directly stream medium size files (static resources directly from the upstream server without buffering
+  proxy_buffers              4 32k;
+
+  # Upstream servers
+  upstream local_peter_prefe {
+    server localhost:9001 fail_timeout=0;
+  }
+  upstream local_locke_prefe {
+    server localhost:9002 fail_timeout=0;
+  }
+
+# Uncoment for unconditional rewrite to https
+#  server {
+#    listen     80;
+#    server_name ulearn.upcnet.es;
+#    rewrite ^(.*)$ https://$host$1 last;
+#  }
+
+  # Server listening both 80 and SSL port 443
+  server {
+    listen 80;
+    listen 443 ssl;
+
+    server_name bonzo.upc.edu;
+
+    client_max_body_size 4G;
+    #client_body_temp_path /var/nginx/tmp;
+
+    #Specify a charset
+    charset utf-8;
+
+    # Passthrough to the static assets of Genweb, uLearn and MAXUI
+    include /var/nginx/config/genweb-static.conf;
+
+    # Finally, the location of the application at root of the server
+    location / {
+        proxy_set_header X-Virtual-Host-URI $scheme://$host:$server_port;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+
+    rewrite ^/(.*)$ /VirtualHostBase/$scheme/$host:$server_port/VirtualHostRoot/$1 break;
+        proxy_pass   http://local_peter_prefe;
+    }
+
+  }
+
+  # Include the default configuration for the existing branches by Genweb environment
+  include /var/nginx/config/environments/*.conf;
+
+  # Include other virtualhosts
+  include /var/nginx/config/sites-enabled/*;
+}
