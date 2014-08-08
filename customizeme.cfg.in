@@ -1,2 +1,7 @@
 [ldapconfig]
 bindpasswd = secret
+
+[hosts]
+# Needed for frontend-only build
+frontend1 = peter.upc.edu
+frontend2 = locke.upc.edu
