@@ -1,1 +1,1 @@
-# Folder for uleanr nginx instances conf files
+# Folder for ulearn nginx instances conf files
