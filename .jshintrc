@@ -1,0 +1,19 @@
+{
+    "undef": true,
+    "latedef": true,
+    "indent": 4,
+    "curly": true,
+    "eqeqeq": true,
+    "eqnull": true,
+    "browser": true,
+    "es3": true,
+    "unused": "vars",
+    "globals": {
+        "jQuery": true,
+        "_": true,
+        "$": true,
+        "alert": true,
+        "module": true,
+        "google": true
+    }
+}
