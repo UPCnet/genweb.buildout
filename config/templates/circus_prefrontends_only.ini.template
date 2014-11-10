@@ -10,7 +10,7 @@ httpd_port = ${ports:circus}
 
 [watcher:varnish1]
 cmd = ${buildout:directory}/parts/varnish-build/sbin/varnishd
-args = -p user=plone -f "${buildout:directory}/config/cache1.conf" -P "${buildout:directory}/parts/varnish1/varnish1.pid" -a 0.0.0.0:9001 -T 0.0.0.0:9101 -s malloc,256M -F -n varnish1
+args = -p user=plone -f "${buildout:directory}/config/cache1.conf" -P "${buildout:directory}/parts/varnish1/varnish1.pid" -a 0.0.0.0:9001 -T 0.0.0.0:9101 -s malloc,256M -F -n varnish1 -S "${buildout:directory}/config/.varnishsecret"
 copy_env = True
 
 [watcher:haproxy1]
@@ -19,7 +19,7 @@ args = -f ${buildout:directory}/config/balancer1.conf -db
 
 [watcher:varnish2]
 cmd = ${buildout:directory}/parts/varnish-build/sbin/varnishd
-args = -p user=plone -f "${buildout:directory}/config/cache2.conf" -P "${buildout:directory}/parts/varnish2/varnish2.pid" -a 0.0.0.0:9002 -T 0.0.0.0:9102 -s malloc,256M -F -n varnish2
+args = -p user=plone -f "${buildout:directory}/config/cache2.conf" -P "${buildout:directory}/parts/varnish2/varnish2.pid" -a 0.0.0.0:9002 -T 0.0.0.0:9102 -s malloc,256M -F -n varnish2 -S "${buildout:directory}/config/.varnishsecret"
 copy_env = True
 
 [watcher:haproxy2]
