@@ -7,3 +7,6 @@ frontend1 = peter.upc.edu
 frontend2 = locke.upc.edu
 haproxy-cookie1 = peter
 haproxy-cookie2 = locke
+
+[supervisor-passwd]
+passwd = secret
