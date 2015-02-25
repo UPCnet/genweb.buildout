@@ -66,6 +66,32 @@ parser.add_option("--setuptools-version",
 options, args = parser.parse_args()
 
 ######################################################################
+# Custom bootstraping step to generate extra .cfg files
+
+
+def install_configfile(source, destination):
+    """
+        Install a configfile from a template, only when destination file doesn't exists.
+        Generates an empty file if source is not defined
+
+    """
+    if not os.path.exists(destination):
+        if source:
+            shutil.copyfile(source, destination)
+        else:
+            open(destination, 'w').write('')
+        print 'Generated config file {}'.format(os.path.realpath(destination))
+        return True
+
+# Initialize customizeme.cfg if a matching template is found
+customizeme_template = 'config/templates/customizeme/customizeme.{}'.format(options.config_file)
+if os.path.exists(customizeme_template):
+    install_configfile(customizeme_template, 'customizeme.cfg')
+# otherwise set it empty if it doesn't exist yet.
+else:
+    install_configfile(None, 'customizeme.cfg')
+
+######################################################################
 # load/install setuptools
 
 try:
