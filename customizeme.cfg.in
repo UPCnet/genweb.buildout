@@ -1,6 +1,11 @@
 [ldapconfig]
 bindpasswd = secret
 
+alt_ldap_uri =
+alt_bind_dn =
+alt_bindpasswd =
+alt_base_dn =
+
 [hosts]
 # Needed for frontend-only build
 frontend1 = peter.upc.edu
