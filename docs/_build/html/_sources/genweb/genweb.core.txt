@@ -1,0 +1,6 @@
+===========
+genweb.core
+===========
+
+This is the main Genweb package that rules them all in darkness. ;)
+

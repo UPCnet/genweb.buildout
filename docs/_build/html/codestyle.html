@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Manual de bones pràctiques &mdash; Genweb 4.5 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Genweb 4.5 documentation" href="index.html"/>
+        <link rel="next" title="Testing" href="testing.html"/>
+        <link rel="prev" title="Changelog" href="genweb/intro.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Genweb</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="simple">
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genweb/intro.html">Changelog</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Manual de bones pràctiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pep8">PEP8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vistes">Vistes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#editor-ide">Editor / IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#git-i-github">git i Github</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#travis-ci">Travis CI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eggs.html">EGGS (paquets) que composen Genweb</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eggs.html#genweb-core">genweb.core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eggs.html#genweb-controlpanel">genweb.controlpanel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eggs.html#genweb-theme">genweb.theme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eggs.html#genweb-stack">genweb.stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eggs.html#genweb-portlets">genweb.portlets</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Genweb</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Manual de bones pràctiques</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/codestyle.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="manual-de-bones-practiques">
+<h1>Manual de bones pràctiques<a class="headerlink" href="#manual-de-bones-practiques" title="Permalink to this headline">¶</a></h1>
+<p>Aquest document exposa algunes de les bones pràctiques que es recomanen quan desenvolopeu el projecte Genweb.</p>
+<div class="section" id="pep8">
+<h2>PEP8<a class="headerlink" href="#pep8" title="Permalink to this headline">¶</a></h2>
+<p>És important mantindre un codi d&#8217;estil unificat basat en l&#8217;estàndar Python PEP8. Aquest codi el podeu trobar a:</p>
+<div class="highlight-python"><div class="highlight"><pre>http://www.python.org/dev/peps/pep-0008/
+</pre></div>
+</div>
+<p>Hi han eines validadores de codi (linters) pels editors més comuns que validen PEP8, per exemple SublimeText2 te un plugin linter per PEP8.</p>
+</div>
+<div class="section" id="vistes">
+<h2>Vistes<a class="headerlink" href="#vistes" title="Permalink to this headline">¶</a></h2>
+<p>Genweb disposa del framework de desenvolupament Grok, que permet declarar vistes i viewlets de manera imperativa via Python sense necessitat de declarar-los via ZCML. Així es manté unificat el codi i la declaració de la vista.</p>
+<p>En la mida de lo possible, utilitzarem Grok per totes les vistes i viewlets. En cas de haver de fer overrides, es farà via ZCML.</p>
+</div>
+<div class="section" id="editor-ide">
+<h2>Editor / IDE<a class="headerlink" href="#editor-ide" title="Permalink to this headline">¶</a></h2>
+<p>Es recomana utilitzar l&#8217;entorn de desenvolupament (IDE) <a class="reference external" href="http://www.sublimetext.com/">Sublime Text 2</a>. En l&#8217;últim any s&#8217;ha convertit en referència de la comunitat i disposa de molts plugins que faciliten el treball diari del desenvolupador.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Podeu trobar més informació de com instal·lar Sublime Text 2 i els plugins més interessants a: <a class="reference external" href="http://upcnet-gc-docs.readthedocs.org/en/latest/">http://upcnet-gc-docs.readthedocs.org/en/latest/</a></p>
+</div>
+</div>
+<div class="section" id="git-i-github">
+<h2>git i Github<a class="headerlink" href="#git-i-github" title="Permalink to this headline">¶</a></h2>
+<p>El VCS que es fa servir a Genweb és git. Es troba hostatjat en el servei de social coding <a class="reference external" href="http://github.com/">Github</a> .</p>
+<p>Els paquets de Genweb pengen de la organització UPCnet de Github i són públics. Genweb és codi lliure sota la llicència GPL v2. Aquest és la URL:</p>
+<div class="highlight-python"><div class="highlight"><pre>http://github.com/UPCnet
+</pre></div>
+</div>
+<p>La manera de treballar amb git és amb branques i tags per releases finals. Aquestes branques segueixen el estàndar:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>master</dt>
+<dd>Per releases finals. Codi &#8220;ready for production&#8221;</dd>
+<dt>develop</dt>
+<dd>Versions beta i encara no publicades i probablement, codi no llest per producció. Branca que te els canvis que es publicaran en la següent release.</dd>
+<dt>&lt;altres branques no permanents&gt;</dt>
+<dd>Branques de alphas i de codi que encara no está acabat. Poden ser locals a cada desenvolupador o compartides en servidor.</dd>
+</dl>
+</div></blockquote>
+<p>Només els usuaris (de Github) autoritzats a la organització poden fer canvis en els repositoris. Els usuaris que vulguin contribuir amb codi a Genweb ho han de fer via &#8220;pull requests&#8221; de Github. El codi es revisarà i es farà el &#8220;merge&#8221; si és convenient.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Per més informació sobre git i github, podeu consultar: <a class="reference external" href="https://help.github.com/">https://help.github.com/</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="testing.html" class="btn btn-neutral float-right" title="Testing">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="genweb/intro.html" class="btn btn-neutral" title="Changelog"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Plone Team at UPCnet.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'4.5',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
