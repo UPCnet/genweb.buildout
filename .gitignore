@@ -40,5 +40,11 @@ config/nginx
 config/circus.ini
 config/nginx.conf
 
+# Docs related
+docs/Makefile
+docs/make.bat
+docs/html
+docs/doctrees
+
 # Initialization values
 customizeme.cfg
