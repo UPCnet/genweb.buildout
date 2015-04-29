@@ -1,6 +1,6 @@
-===========
-genweb.core
-===========
+======
+Genweb
+======
 
 This is the main *developer* documentation for the core packages of genweb
 which, at the moment of writting are composed by:
