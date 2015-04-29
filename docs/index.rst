@@ -44,6 +44,13 @@ Aquesta documentació ve motivada per la necessitat de tindre un punt únic
 d'entrada on compartir la informació relacionada amb com està desenvolupat
 Genweb i les bones pràctiques relacionades amb el seu desenvolupament.
 
+.. note::
+
+    En aquesta `web`_ teniu el manual de referència de reStructuredText. Recordeu que podeu fer servir tot el que aporta `Sphinx`_.
+
+.. _web: http://sphinx.pocoo.org/rest.html
+.. _Sphinx: http://sphinx.pocoo.org/
+
 Projectes / Paquets
 ===================
 
@@ -64,6 +71,52 @@ Directives
    codestyle
    testing
    eggs
+
+Procediments i bones pràctiques d'equip:
+========================================
+
+Documents que contenen recomanacions i bones pràctiques que hem d'observar sempre que poguem. Són importants ja que si tots mirem d'aplicar-los revertirà en un augment de qualitat en el nostre treball diari.
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+
+   procediments/*
+
+
+Tips and Tricks
+===============
+
+Accions que proporcionen *Big Wins* (TM) al nostre treball diari. Aquelles que un cop les apliquem, se'ns queda un somriure a la boca i internament pensem (Muahahaha)
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+
+   tips&tricks/*
+
+
+How To's
+========
+
+Documents que expliquen un aspecte o funcionalitat concreta.
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+
+   howto/*
+
+Troubleshooting
+===============
+
+Documents que expliquen com arreglar un error concret.
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+
+   troubleshooting/*
 
 Indices and tables
 ==================
