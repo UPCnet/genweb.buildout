@@ -12,6 +12,11 @@ which, at the moment of writting are composed by:
    ulearn.core
    ulearn.theme
 
+Dependències!!
+==============
+
+Actualment necessitem per al correcte funcionament de la instal·lació és:
+
 Changelog
 =========
 
