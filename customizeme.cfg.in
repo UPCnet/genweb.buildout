@@ -15,3 +15,7 @@ haproxy-cookie2 = locke
 
 [supervisor-passwd]
 passwd = secret
+
+[deployment]
+varnish_url =
+dorsal = 
