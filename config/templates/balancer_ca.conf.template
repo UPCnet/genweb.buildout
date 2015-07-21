@@ -1,0 +1,65 @@
+# This is the default haproxy load balancing configuration. It uses will
+# load balance four ZEO clients.
+#
+# Note that balancer.conf is generated from balancer.conf.template.
+
+global
+  log 127.0.0.1 local6
+
+  user ${users:balancer}
+  group ${balancerConfig:group}
+  maxconn ${balancerConfig:maxconn}
+  ulimit-n 65536
+  daemon
+  nbproc 1
+
+defaults
+  log global
+  mode http
+
+  # The zope instances have maxconn 1, and it is important that
+  # unused/idle connections are closed as soon as possible.
+  option httpclose
+  # Remove requests from the queue if people press stop button
+  option abortonclose
+  #  option httplog
+  #  option dontlognull
+  retries 3
+  option redispatch
+  monitor-uri /haproxy-ping
+
+  timeout connect 7s
+  timeout queue   300s
+  timeout client  300s
+  timeout server  300s
+
+  stats enable
+  stats uri /haproxy-status
+  stats refresh 5s
+  stats realm Haproxy\ statistics
+
+frontend GWUPCnetIn-1
+  bind ${hosts:balancer}:${ports:balancer1}
+  default_backend GenwebUPCnet1
+
+  capture cookie __ac len 10
+  option httplog
+  log 127.0.0.1 local6
+
+# Load balancing over the zope instances
+
+backend GenwebUPCnet1
+
+  appsession __ac len 32 timeout 1d
+  balance roundrobin
+  cookie serverid insert nocache indirect
+  option httpchk GET /ping
+
+  server  genweb1 ${hosts:frontend1}:11001 cookie ${hosts:haproxy-cookie1}1 check maxconn 1 maxqueue 2 rise 1
+  server  genweb2 ${hosts:frontend1}:11002 cookie ${hosts:haproxy-cookie1}2 check maxconn 1 maxqueue 2 rise 1
+  server  genweb3 ${hosts:frontend1}:11003 cookie ${hosts:haproxy-cookie1}3 check maxconn 1 maxqueue 2 rise 1
+  server  genweb4 ${hosts:frontend1}:11004 cookie ${hosts:haproxy-cookie1}4 check maxconn 1 maxqueue 2 rise 1
+  server  genweb1 ${hosts:frontend2}:11001 cookie ${hosts:haproxy-cookie2}1 check maxconn 1 maxqueue 2 rise 1
+  server  genweb2 ${hosts:frontend2}:11002 cookie ${hosts:haproxy-cookie2}2 check maxconn 1 maxqueue 2 rise 1
+  server  genweb3 ${hosts:frontend2}:11003 cookie ${hosts:haproxy-cookie2}3 check maxconn 1 maxqueue 2 rise 1
+  server  genweb4 ${hosts:frontend2}:11004 cookie ${hosts:haproxy-cookie2}4 check maxconn 1 maxqueue 2 rise 1
