@@ -11,6 +11,7 @@ which, at the moment of writting are composed by:
 
    genweb.core
    genweb.controlpanel
+   anz.casclient
 
 Changelog
 =========
