@@ -71,3 +71,5 @@ from the CAS server in case we want to debug it::
           </saml1p:Response>
         </SOAP-ENV:Body>
       </SOAP-ENV:Envelope>
+
+More info in the jasig web: https://www.apereo.org/content/cas-2-architecture
