@@ -8,3 +8,4 @@ This is the Genweb theming knowledge base.
    :glob:
 
    cssjs_resources
+   simple_css_custom
