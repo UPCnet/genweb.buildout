@@ -61,6 +61,16 @@ Projectes / Paquets
    genweb/intro
    ulearn/intro
 
+Funcionalitats
+==============
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+
+   theming/intro
+
+
 Directives
 ==========
 

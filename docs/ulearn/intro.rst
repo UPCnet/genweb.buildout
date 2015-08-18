@@ -11,6 +11,7 @@ which, at the moment of writting are composed by:
 
    ulearn.core
    ulearn.theme
+   ulearn.js
 
 Dependències!!
 ==============
