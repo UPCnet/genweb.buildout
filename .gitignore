@@ -39,6 +39,8 @@ src/
 config/nginx
 config/circus.ini
 config/nginx.conf
+config/balancer?.conf
+config/cache?.conf
 
 # Docs related
 docs/Makefile
