@@ -18,7 +18,7 @@ backend gw {
 acl purge_allowed {
     "localhost";
     "127.0.0.1";
-    "195.77.8.40";  /* gradefajol.upcnet.es */
+    "${hosts:purge_ip1}";
 }
 
 sub vcl_recv {
