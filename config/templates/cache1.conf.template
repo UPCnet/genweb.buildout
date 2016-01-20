@@ -77,6 +77,11 @@ sub vcl_recv {
       set req.http.X-Anonymous = "True";
   }
 
+  # Keep auth/anon variants apart if "Vary: X-Anonymous" is in the response
+  if (!(req.http.Authorization || req.http.Cookie ~ "(^|.*; )__ac=")) {
+      set req.http.X-Anonymous = "True";
+  }
+
   return(hash);
 
 }
@@ -104,7 +109,7 @@ sub vcl_backend_response {
     # Don't allow static files to set cookies.
     # (?i) denotes case insensitive in PCRE (perl compatible regular expressions).
     # make sure you edit both and keep them equal.
-    if (req.url ~ "(?i)\.(pdf|asc|dat|txt|doc|xls|ppt|tgz|png|gif|jpeg|jpg|ico|swf|css|js)(\?.*)?$") {
+    if (bereq.url ~ "(?i)\.(pdf|asc|dat|txt|doc|xls|ppt|tgz|png|gif|jpeg|jpg|ico|swf|css|js)(\?.*)?$") {
       unset beresp.http.set-cookie;
     }
 
@@ -133,6 +138,12 @@ sub vcl_backend_response {
         set beresp.uncacheable = true;
         set beresp.ttl = 120s;
         return(deliver);
+    }
+
+    if (beresp.http.X-Anonymous && !beresp.http.Cache-Control) {
+        set beresp.http.X-Varnish-Action = "FETCH (override - backend not setting cache control)";
+        set beresp.ttl = 600s;
+        return (deliver);
     }
 
     set beresp.http.X-Varnish-Action = "FETCH (insert)";
