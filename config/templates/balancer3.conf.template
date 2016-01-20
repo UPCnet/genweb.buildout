@@ -39,7 +39,7 @@ defaults
   stats realm Haproxy\ statistics
 
 frontend GWUPCnetIn-2
-  bind ${hosts:balancer}:${ports:balancer2}
+  bind ${hosts:balancer}:${ports:balancer4}
   default_backend GenwebUPCnet2
 
   capture cookie __ac len 10
