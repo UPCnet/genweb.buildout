@@ -52,7 +52,7 @@ backend GenwebUPCnet2
 
   appsession __ac len 32 timeout 1d
   balance roundrobin
-  cookie serverid insert nocache indirect
+  cookie serverid insert indirect
   option httpchk GET /ping
 
   server  genweb1 ${hosts:frontend2}:11001 cookie ${hosts:haproxy-cookie2}1 check maxconn 1 maxqueue 2 rise 1
