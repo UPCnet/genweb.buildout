@@ -146,6 +146,13 @@ sub vcl_backend_response {
         return (deliver);
     }
 
+    if (!beresp.http.Cache-Control) {
+        set beresp.http.X-Varnish-Action = "FETCH (override - backend not setting cache control)";
+        set beresp.uncacheable = true;
+        set beresp.ttl = 120s;
+        return (deliver);
+    }
+
     set beresp.http.X-Varnish-Action = "FETCH (insert)";
 
     set beresp.grace = 120s;
