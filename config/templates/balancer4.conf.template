@@ -55,7 +55,7 @@ backend GenwebUPCnet2
   cookie serverid insert indirect
   option httpchk GET /ping
 
-  server  genweb1 ${hosts:frontend2}:11001 cookie ${hosts:haproxy-cookie2}1 check maxconn 1 maxqueue 2 rise 1
-  server  genweb2 ${hosts:frontend2}:11002 cookie ${hosts:haproxy-cookie2}2 check maxconn 1 maxqueue 2 rise 1
-  server  genweb3 ${hosts:frontend2}:11003 cookie ${hosts:haproxy-cookie2}3 check maxconn 1 maxqueue 2 rise 1
-  server  genweb4 ${hosts:frontend2}:11004 cookie ${hosts:haproxy-cookie2}4 check maxconn 1 maxqueue 2 rise 1
+  server  genweb1 ${hosts:frontend4}:11001 cookie ${hosts:haproxy-cookie4}1 check maxconn 1 maxqueue 2 rise 1
+  server  genweb2 ${hosts:frontend4}:11002 cookie ${hosts:haproxy-cookie4}2 check maxconn 1 maxqueue 2 rise 1
+  server  genweb3 ${hosts:frontend4}:11003 cookie ${hosts:haproxy-cookie4}3 check maxconn 1 maxqueue 2 rise 1
+  server  genweb4 ${hosts:frontend4}:11004 cookie ${hosts:haproxy-cookie4}4 check maxconn 1 maxqueue 2 rise 1
