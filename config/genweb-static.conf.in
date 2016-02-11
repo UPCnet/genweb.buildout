@@ -1,0 +1,45 @@
+# Passthrough to the static assets of Genweb
+location ~ .*?/\+\+genweb\+\+static/(.*) {
+  alias /var/nginx/parts/omelette/genweb/core/static/$1;
+}
+location ~ .*?/\+\+genweb\+\+stylesheets/(.*) {
+  alias /var/nginx/parts/omelette/genweb/theme/stylesheets/$1;
+}
+location ~ .*?/\+\+genweb\+\+js/(.*) {
+  alias /var/nginx/parts/omelette/genweb/theme/js/$1;
+}
+
+location ~ .*?/\+\+gw\+\+stylesheets/(.*) {
+  alias /var/nginx/parts/omelette/genweb/alternatheme/stylesheets/$1;
+}
+location ~ .*?/\+\+gw\+\+js/(.*) {
+  alias /var/nginx/parts/omelette/genweb/alternatheme/js/$1;
+}
+
+location ~ .*?/\+\+components\+\+root/(.*) {
+  alias /var/nginx/parts/omelette/genweb/core/components/$1;
+}
+
+location ~ .*?/\+\+components\+\+bootstrap/(.*) {
+  alias /var/nginx/parts/omelette/genweb/alternatheme/components/bootstrap/$1;
+}
+
+location ~ .*?/\+\+components\+\+fontawesome/(.*) {
+  alias /var/nginx/parts/omelette/genweb/alternatheme/components/fontawesome/$1;
+}
+
+# Passthrough to the static assets of uLearn
+location ~ .*?/\+\+ulearn\+\+static/(.*) {
+  alias /var/nginx/parts/omelette/ulearn/theme/static/$1;
+}
+location ~ .*?/\+\+ulearn\+\+stylesheets/(.*) {
+  alias /var/nginx/parts/omelette/ulearn/theme/stylesheets/$1;
+}
+location ~ .*?/\+\+ulearn\+\+js/(.*) {
+  alias /var/nginx/parts/omelette/ulearn/theme/js/$1;
+}
+
+# Passthrough to the static assets of MAXUI
+location ~ .*?/\+\+maxui\+\+static/(.*) {
+  alias /var/nginx/parts/omelette/mrs/max/static/$1;
+}
