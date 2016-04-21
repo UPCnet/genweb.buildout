@@ -9,3 +9,6 @@ alt_base_dn =
 [deployment]
 varnish_url =
 dorsal =
+
+[buildout]
+eggs = Products.PloneHotfix20160419
