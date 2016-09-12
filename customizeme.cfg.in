@@ -1,0 +1,14 @@
+[ldapconfig]		
+bindpasswd = secret		
+		
+alt_ldap_uri =		
+alt_bind_dn =		
+alt_bindpasswd =		
+alt_base_dn =		
+		
+[deployment]		
+varnish_url =		
+dorsal =		
+		
+[buildout]		
+eggs = Products.PloneHotfix20160419
