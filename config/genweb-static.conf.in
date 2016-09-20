@@ -1,45 +1,88 @@
 # Passthrough to the static assets of Genweb
+location ~ .*?/\+\+genweb\+\+dist/(.*) {
+  expires 30d;
+  add_header Pragma public;
+  add_header Cache-Control "public";
+  alias /var/nginx/parts/omelette/genweb/cdn/dist/$1;
+}
+
 location ~ .*?/\+\+genweb\+\+static/(.*) {
+  expires 30d;
+  add_header Pragma public;
+  add_header Cache-Control "public";
   alias /var/nginx/parts/omelette/genweb/core/static/$1;
 }
 location ~ .*?/\+\+genweb\+\+stylesheets/(.*) {
+  expires 30d;
+  add_header Pragma public;
+  add_header Cache-Control "public";
   alias /var/nginx/parts/omelette/genweb/theme/stylesheets/$1;
 }
 location ~ .*?/\+\+genweb\+\+js/(.*) {
+  expires 30d;
+  add_header Pragma public;
+  add_header Cache-Control "public";
   alias /var/nginx/parts/omelette/genweb/theme/js/$1;
 }
 
 location ~ .*?/\+\+gw\+\+stylesheets/(.*) {
+  expires 30d;
+  add_header Pragma public;
+  add_header Cache-Control "public";
   alias /var/nginx/parts/omelette/genweb/alternatheme/stylesheets/$1;
 }
 location ~ .*?/\+\+gw\+\+js/(.*) {
+  expires 30d;
+  add_header Pragma public;
+  add_header Cache-Control "public";
   alias /var/nginx/parts/omelette/genweb/alternatheme/js/$1;
 }
 
 location ~ .*?/\+\+components\+\+root/(.*) {
+  expires 30d;
+  add_header Pragma public;
+  add_header Cache-Control "public";
   alias /var/nginx/parts/omelette/genweb/core/components/$1;
 }
 
 location ~ .*?/\+\+components\+\+bootstrap/(.*) {
+  expires 30d;
+  add_header Pragma public;
+  add_header Cache-Control "public";
   alias /var/nginx/parts/omelette/genweb/alternatheme/components/bootstrap/$1;
 }
 
 location ~ .*?/\+\+components\+\+fontawesome/(.*) {
+  expires 30d;
+  add_header Pragma public;
+  add_header Cache-Control "public";
   alias /var/nginx/parts/omelette/genweb/alternatheme/components/fontawesome/$1;
 }
 
 # Passthrough to the static assets of uLearn
 location ~ .*?/\+\+ulearn\+\+static/(.*) {
+  expires 30d;
+  add_header Pragma public;
+  add_header Cache-Control "public";
   alias /var/nginx/parts/omelette/ulearn/theme/static/$1;
 }
 location ~ .*?/\+\+ulearn\+\+stylesheets/(.*) {
+  expires 30d;
+  add_header Pragma public;
+  add_header Cache-Control "public";
   alias /var/nginx/parts/omelette/ulearn/theme/stylesheets/$1;
 }
 location ~ .*?/\+\+ulearn\+\+js/(.*) {
+  expires 30d;
+  add_header Pragma public;
+  add_header Cache-Control "public";
   alias /var/nginx/parts/omelette/ulearn/theme/js/$1;
 }
 
 # Passthrough to the static assets of MAXUI
 location ~ .*?/\+\+maxui\+\+static/(.*) {
+  expires 30d;
+  add_header Pragma public;
+  add_header Cache-Control "public";
   alias /var/nginx/parts/omelette/mrs/max/static/$1;
 }
