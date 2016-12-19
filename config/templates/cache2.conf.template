@@ -22,6 +22,10 @@ acl purge_allowed {
 }
 
 sub vcl_recv {
+  # pass for the ics_view, avoid returning a blank ics file.
+  if (req.url ~ "/ics_view$") {
+      return(pass);
+  }
 
   # Sanitize compression handling
   if (req.http.Accept-Encoding) {
