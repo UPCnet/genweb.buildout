@@ -12,3 +12,6 @@ dorsal =
 		
 [buildout]		
 eggs = Products.PloneHotfix20160419
+
+[custom]
+parts = 
