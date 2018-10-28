@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -f ${buildout:directory}/var/log/urls_to_purge ]
+then
+  for i in `cat ${buildout:directory}/var/log/urls_to_purge  | sed 's/VirtualHostRoot.*//' | sort | uniq`
+  do
+      curl -XBAN -H "x-ban: $i" ${deployment:varnish_url}
+  done
+  /bin/rm ${buildout:directory}/var/log/urls_to_purge
+fi
