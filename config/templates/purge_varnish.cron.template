@@ -1,0 +1,2 @@
+# ban varnish and delete log file if exists
+* *    * * *   root    ${buildout:directory}/bin/purge_varnish.sh
