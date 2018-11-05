@@ -23,7 +23,7 @@ acl purge_allowed {
 
 sub vcl_recv {
   # pass for the ics_view, avoid returning a blank ics file.
-  if (req.url ~ "/ics_view$") {
+  if (req.url ~ "/ics_view$|@@event_listing_ical.*") {
       return(pass);
   }
 
@@ -56,6 +56,16 @@ sub vcl_recv {
             return(synth(403, "Purge not allowed from this host. Access denied."));
          }
      }
+     # BAN - The CacheFu product can invalidate updated URLs
+     # Vicente - Added to ban with regex through a curl request
+     if (req.method == "BAN") {
+         if (!client.ip ~ purge_allowed) {
+               return (synth(405, "Not allowed."));
+           }
+         ban("obj.http.x-ban ~ .*" + req.http.x-ban + ".*");
+         return(synth(200, "Ban added"));
+       }
+
   }
 
   /* Do not cache AJAX requests */
@@ -109,6 +119,8 @@ sub vcl_miss {
 }
 
 sub vcl_backend_response {
+    # Vicente - header added fot banning purposes
+    set beresp.http.x-ban = bereq.url;
 
     # Don't allow static files to set cookies.
     # (?i) denotes case insensitive in PCRE (perl compatible regular expressions).
@@ -184,9 +196,12 @@ sub vcl_hash {
 }
 
 sub vcl_deliver {
-        if (obj.hits > 0) {
-                set resp.http.X-Cache = "HIT varnish1";
-        } else {
-                set resp.http.X-Cache = "MISS varnish1";
-        }
+    # Vicente - unset the banning cache header as it is only for internal use
+    unset resp.http.x-ban;
+
+    if (obj.hits > 0) {
+            set resp.http.X-Cache = "HIT varnish1";
+    } else {
+            set resp.http.X-Cache = "MISS varnish1";
+    }
 }
