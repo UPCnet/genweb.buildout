@@ -13,7 +13,7 @@ name of the project .cfg associated:
 
 .. code-block:: bash
 
- $ [path_to_your_python_bin] bootstrap.py -c genwebupc.cfg
+ $ [path_to_your_python_bin] bootstrap.py --setuptools-version=38.7.0 --buildout-version=2.13.4 -c genwebupc.cfg
  $ ./bin/buildout -c genwebupc.cfg
 
 Check out for the available projects in the projects.cfg file.
